@@ -4,7 +4,7 @@ import { packagesLinksGenerator } from './packages';
 import { platformLinksGenerator } from './platform';
 
 import { zh } from "./zh/config";
-
+import { metaObject as zhMetaObject } from "./zh/meta";
 const { packagesNavItem, packagesSidebar } = packagesLinksGenerator();
 const { platformNavItem, platformSidebar } = platformLinksGenerator();
 
@@ -145,13 +145,27 @@ export default defineConfig({
 
     const addOg = (prop: string, content: string) => addMeta(`og:${prop}`, content);
 
-    addOg('title', isHome ? siteTitle : `${title} | ${siteTitle}`);
-    addOg('site_name', 'Telegram Mini Apps Platform Documentation');
-    addOg('image', `${siteBase}thumbnail-1200x630.6b8f54aa217a6baed4703ad5af866677.png`);
-    addOg('image:width', '1200');
-    addOg('image:height', '630');
-    addOg('image:type', 'image/png');
-    addOg('locale', lang.replace(/-/, '_'));
+    const i18nMeta = {
+      zh: zhMetaObject,
+    };
+
+    let baseMeta = {
+      site_name: 'Telegram Mini Apps Platform Documentation',
+      image: `${siteBase}thumbnail-1200x630.6b8f54aa217a6baed4703ad5af866677.png`,
+      'image:width': '1200',
+      'image:height': '630',
+      'image:type': 'image/png',
+      locale: lang.replace(/-/, '_'),
+      // for i18n
+      'locale:alternate': 'zh_CN',
+    };
+
+    const currentI18nMeta = Object.entries(i18nMeta).find(([key, _]) => filePath?.startsWith(`${key}/`))?.[1];
+
+    const i18nSiteTitle = currentI18nMeta?.title ?? siteTitle;
+    baseMeta = { ...baseMeta, ...currentI18nMeta, title: isHome ? i18nSiteTitle : `${title} | ${i18nSiteTitle}` } as typeof baseMeta;
+
+    Object.entries(baseMeta).forEach(([key, value]) => addOg(key, value));
 
     // To make it correctly display in Telegram.
     addMeta('twitter:card', 'summary_large_image');
