@@ -1,11 +1,10 @@
 # 方法
 
-本文涵盖与 [apps communication](../../platform/apps-communication.md)
-方法相关的主题。
+本文涵盖与[应用程序通信](../../platform/apps-communication.md) 方法相关的主题。
 
 ## 调用方法
 
-要调用 Telegram 迷你应用程序的方法，开发人员应使用 `postEvent` 函数：
+要调用 Telegram 小程序的方法，开发人员应使用 `postEvent` 函数：
 
 ```typescript
 import { postEvent } from '@telegram-apps/bridge';
@@ -14,11 +13,11 @@ postEvent('web_app_setup_back_button', { is_visible: true });
 ```
 
 该功能会根据当前
-环境自动确定发送事件的正确方式。 它能识别 Telegram 应用程序类型并选择合适的流程。
+环境自动确定发送事件的正确方式。  它能识别 Telegram 应用程序类型并选择合适的流程。
 
 ### `request`
 
-当开发人员需要调用 Telegram 小应用程序方法和
+当开发人员需要调用 Telegram 小程序方法和
 接收特定事件时，应使用 `request` 函数。
 
 例如，调用
@@ -42,7 +41,7 @@ console.log(viewport);
 // };
 ```
 
-如果 Telegram 小应用程序方法接受参数，则应在第三个参数的 `params` 属性
+如果 Telegram 小程序方法接受参数，则应在第三个参数的 `params` 属性
 中传递这些参数：
 
 ```typescript
@@ -75,7 +74,7 @@ const result = await request(
 
 #### `postEvent`
 
-`postEvent` 选项允许开发人员覆盖用于调用 Telegram 迷你应用程序
+`postEvent` 选项允许开发人员覆盖用于调用 Telegram 小程序
 方法的方法。
 
 ```typescript
@@ -88,7 +87,7 @@ request('web_app_request_viewport', 'viewport_changed', {
 
 #### `abortSignal`
 
-要从外部终止返回的承诺，需要使用 `abortSignal` 选项。
+要从外部中止返回的 promise，请使用 `abortSignal` 选项。
 
 ```ts
 const controller = new AbortController();
@@ -129,7 +128,7 @@ try {
 
 #### `capture`
 
-`capture` 属性是一个允许开发人员确定是否应捕获 Mini Apps
+`capture` 属性是一个允许开发人员确定是否应捕获小程序
 事件并从 `request` 函数返回的函数：
 
 ```typescript
@@ -143,7 +142,7 @@ request('web_app_open_invoice', 'invoice_closed', {
 });
 ```
 
-默认情况下，`request` 函数会捕获具有所需名称的第一个事件。 在这种情况下，只有当事件具有预期的标签时，该函数才会捕获事件，特定于
+默认情况下，`request` 函数会捕获带有所需名称的第一个事件。 在这种情况下，只有当事件具有预期的标签时，该函数才会捕获事件，特定于
 [invoice_closed](../../platform/events.md#invoice-closed) 事件。
 
 当传递一个事件数组时，`capture` 函数将收到一个对象，其中包含
@@ -152,7 +151,7 @@ request('web_app_open_invoice', 'invoice_closed', {
 ## 调用自定义方法
 
 自定义方法是指可与
-[web_app_invoke_custom_method](../../platform/methods.md#web-app-invoke-custom-method) 迷你应用程序
+[web_app_invoke_custom_method](../../platform/methods.md#web-app-invoke-custom-method) 小程序
 方法一起使用的方法。
 
 `invokeCustomMethod` 函数通过重复使用 `request` 函数，简化了此类方法的使用。
@@ -182,17 +181,17 @@ import { invokeCustomMethod } from '@telegram-apps/bridge';
 invokeCustomMethod('deleteStorageValues', { keys: ['a'] }, 'ABC');
 ```
 
-在内部，它只是封装了与方法相关的特定逻辑，因此开发人员不应该
-。
+在内部，它只是封装了与方法相关的特定逻辑，因此开发人员不应这样做。
 
 与`request`函数不同，`invokeCustomMethod`函数会解析结果，并检查
-是否包含`error`属性。 如果是，函数会抛出相应的错误；否则，返回 `result` 属性。
+是否包含`error`属性。  如果是，函数会抛出相应的错误；否则，
+，返回 `result` 属性。
 
 ## 检查方法支持
 
-`postEvent` 函数不会检查当前 Telegram 应用程序是否支持指定的方法。 为此，需要使用 `supports` 函数。
+`postEvent` 函数不会检查当前 Telegram 应用程序是否支持指定的方法。  为此，需要使用 `supports` 函数。
 
-它接受 Mini Apps 方法名称和当前平台版本：
+它接受 小程序方法名称和当前平台版本：
 
 ```typescript
 import { supports } from '@telegram-apps/bridge';
@@ -212,12 +211,12 @@ supports('web_app_open_link', 'try_instant_view', '6.7'); // true
 ```
 
 > [!TIP]
-> 建议在调用 Mini Apps 方法之前使用该函数，以防止应用程序
+> 建议在调用 小程序方法之前使用该函数，以防止应用程序
 > 陷入僵局或遇到意外行为。
 
 ## 创建更安全的 `postEvent`
 
-该软件包包含一个名为 `createPostEvent` 的函数，它将当前 Mini Apps 版本作为
+该软件包包含一个名为 `createPostEvent` 的函数，它将当前 小程序版本作为
 输入。
 
 它返回 `postEvent` 函数，该函数内部检查传递的方法和

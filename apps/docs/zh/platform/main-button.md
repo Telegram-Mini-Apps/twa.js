@@ -1,6 +1,6 @@
 # 主按钮
 
-![主按钮](/components/main-button.png)
+![Main Button](/components/main-button.png)
 
 主按钮是一个组件，通常在需要执行某些最终
 操作时使用。
@@ -11,10 +11,9 @@
 订单的创建和处理。
 
 这是一个大小适中但功能有限的简单组件。 开发人员可通过
-控制按钮文本、其激活状态、按钮和内部加载器的可见性。
-还可以更新文字和背景颜色。
+控制按钮文本、其激活状态、按钮和内部加载器的可见性。 还可以更新文字和背景颜色。
 
-要更新任何主按钮属性，Telegram 小应用程序提供了
+要更新任何主按钮属性，Telegram 小程序提供了
 [web_app_setup_main_button](methods.md#web-app-setup-main-button)方法。
 当用户点击主按钮时，Telegram 应用程序会发出
 [main_button_pressed](events.md#main-button-pressed) 事件。

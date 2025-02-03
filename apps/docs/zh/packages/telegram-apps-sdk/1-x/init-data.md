@@ -6,7 +6,7 @@ Apps [init data](../../../platform/init-data.md) 的实用程序。
 ## 解析
 
 该库包含函数 `parseInitData`，可从查询参数中提取初始化数据
-信息。 下面是一个使用示例：
+信息。  下面是一个使用示例：
 
 ```typescript
 import { parseInitData } from '@telegram-apps/sdk';

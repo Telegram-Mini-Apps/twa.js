@@ -7,6 +7,8 @@
 
 要解析作为主题参数的值，软件包提供了 `parseThemeParams` 方法。 该
 方法接受一个 JSON 字符串对象或 JavaScript 对象，返回 `ThemeParams`
+接口。 如果提供的数据无效，则会出错。 该
+方法接受一个 JSON 字符串对象或 JavaScript 对象，返回 `ThemeParams`
 接口。 如果提供的数据无效，则会出错。
 
 ::: code-group

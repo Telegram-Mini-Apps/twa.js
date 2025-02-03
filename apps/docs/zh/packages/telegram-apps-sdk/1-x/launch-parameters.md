@@ -7,6 +7,7 @@
 
 要解析作为启动参数的值，软件包提供了 `parseLaunchParams` 方法。
 方法接受以字符串或 `URLSearchParams` 实例形式呈现的查询参数，并返回
+`LaunchParams` 接口。 如果传递的数据无效，则会出错。 方法接受以字符串或 `URLSearchParams` 实例形式呈现的查询参数，并返回
 `LaunchParams` 接口。 如果传递的数据无效，则会出错。
 
 ::: code-group
@@ -111,7 +112,7 @@ serializeLaunchParams({
 ## 检索
 
 该软件包可使用
-的 `retrieveLaunchParams` 函数从当前环境中提取启动参数。 如果所有已知数据源都包含无效数据，则
+的 `retrieveLaunchParams` 函数从当前环境中提取启动参数。  如果所有已知数据源都包含无效数据，则
 会抛出错误。
 
 ```typescript

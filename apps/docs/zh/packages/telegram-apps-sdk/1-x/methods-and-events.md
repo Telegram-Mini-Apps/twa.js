@@ -5,7 +5,7 @@
 
 ## 调用方法
 
-要调用 Telegram 小应用程序的方法，开发人员应使用 `postEvent` 函数：
+要调用 Telegram 小程序的方法，开发人员应使用 `postEvent` 函数：
 
 ```typescript
 import { postEvent } from '@telegram-apps/sdk';
@@ -14,12 +14,12 @@ postEvent('web_app_setup_back_button', { is_visible: true });
 ```
 
 该功能会根据当前
-环境功能自动找到发送该事件的正确方法。 为提高准确性，它可确定当前的 Telegram 应用类型，并
-选择适当的流量。
+环境功能自动找到发送该事件的正确方法。  为了更高的准确性，它会确定当前的 Telegram 应用类型，并选择相应的流程。
 
 ### `request`
 
-如果需要调用某些 Telegram 小应用程序方法
+如果需要调用某些 Telegram 小程序方法
+并接收指定事件，则应使用 `request` 函数。 如果需要调用某些 Telegram 小程序方法
 并接收指定事件，则应使用 `request` 函数。 例如，开发人员希望
 调用 [web_app_request_viewport](../../../platform/methods.md#web-app-request-viewport)
 方法并捕获 [viewport_changed](../../../platform/events.md#viewport-changed)
@@ -42,7 +42,7 @@ console.log(viewport);
 // };
 ```
 
-如果 Telegram 小应用程序方法接受参数，则应在第三个参数的 `params`
+如果 Telegram 小程序方法接受参数，则应在第三个参数的 `params`
 属性中传递这些参数：
 
 ```typescript
@@ -80,7 +80,7 @@ const result = await request({
 
 #### `postEvent`
 
-我们使用 `postEvent` 选项重写方法，该方法用于调用 Telegram 迷你应用程序
+我们使用 `postEvent` 选项重写方法，该方法用于调用 Telegram 小程序
 方法。
 
 ```typescript
@@ -95,7 +95,8 @@ request({
 
 #### `timeout`
 
-`timeout` 选项负责分配请求超时。 如果超时，则会出现错误。
+`timeout` 选项负责分配请求超时。  如果超时，
+，则会出现错误。
 
 ```typescript
 import { request, isTimeoutError } from '@telegram-apps/sdk';
@@ -118,7 +119,7 @@ try {
 
 #### `capture`
 
-`capture` 属性是一个函数，允许开发人员确定是否应捕获 Mini Apps
+`capture` 属性是一个函数，允许开发人员确定是否应捕获小程序
 事件并从 `request` 函数中返回：
 
 ```typescript
@@ -134,15 +135,14 @@ request({
 });
 ```
 
-默认情况下，`request` 函数会捕获带有所需名称的第一个事件。 在
-的情况下，`request` 函数只有在事件具有预期的标签时才会捕获事件。
+默认情况下，`request` 函数会捕获带有所需名称的第一个事件。  在
+的情况下，"request "函数只有在事件具有预期的标签时才会捕获事件。
 
 ## 调用自定义方法
 
-自定义方法是 Telegram 迷你应用程序
+自定义方法是 Telegram 小程序
 [web_app_invoke_custom_method](../../../platform/methods.md#web-app-invoke-custom-method)
-方法可以使用的方法。 `invokeCustomMethod` 函数简化了此类方法的使用，并重复使用了 `request`
-函数。
+方法可以使用的方法。  调试
 
 以下是不使用该函数的代码示例：
 
@@ -174,14 +174,14 @@ invokeCustomMethod('deleteStorageValues', { keys: ['a'] }, 'ABC');
 ```
 
 与`request`函数相反，`invokeCustomMethod`函数解析结果，并
-检查是否包含`error`属性。 如果出现这种情况，函数将抛出相应的
+检查是否包含`error`属性。  如果出现这种情况，函数将抛出相应的
 错误。 否则，将返回 `result` 属性。
 
 ## 事件监听
 
 ### `on` 和 `off`
 
-要开始处理事件，开发人员可以使用 `on` 和 `off` 函数。 下面是
+要开始处理事件，开发人员可以使用 `on` 和 `off` 函数。  下面是
 `on` 函数的基本用法：
 
 ```typescript
@@ -247,13 +247,13 @@ subscribe(listener);
 unsubscribe(listener);
 ```
 
-监听器接受一个包含 `name` 和 `payload` 属性的对象，这些属性是迷你应用程序
+监听器接受一个包含 `name` 和 `payload` 属性的对象，这些属性是小程序
 事件名称和有效载荷。
 
 ## 检查方法支持
 
 `postEvent` 函数本身未检查当前本地 Telegram
-应用程序是否支持指定方法。 为此，开发人员可以使用 `supports` 函数，该函数接受 Mini Apps
+应用程序是否支持指定方法。  为此，开发人员可以使用 `supports` 函数，该函数接受小程序
 方法名称和当前平台版本：
 
 ```typescript
@@ -275,15 +275,16 @@ supports('web_app_open_link', 'try_instant_view', '6.7'); // true
 
 ::: tip
 
-建议在调用 Mini Apps 方法之前使用该函数，以防止应用程序出现
+建议在调用 小程序方法之前使用该函数，以防止应用程序出现
 停顿和其他意外行为。
 
 :::
 
 ### 创建更安全的 `postEvent`
 
-该软件包包含一个名为 `createPostEvent` 的函数，它将当前 Mini Apps
+该软件包包含一个名为 `createPostEvent` 的函数，它将当前小程序
 版本作为输入。 它返回 `postEvent` 函数，内部检查是否支持指定的
+方法和参数。 如果不是，函数将出错。 它返回 `postEvent` 函数，内部检查是否支持指定的
 方法和参数。 如果不是，函数将出错。
 
 ```typescript
@@ -304,7 +305,7 @@ postEvent('web_app_request_phone');
 ## 调试
 
 软件包支持启用调试模式，从而记录与事件
-处理相关的信息。 要更改调试模式，请使用`setDebug`函数：
+处理相关的信息。 要更改调试模式，请使用`setDebug`函数： 要更改调试模式，请使用`setDebug`函数：
 
 ```typescript
 import { setDebug } from '@telegram-apps/sdk';
@@ -318,7 +319,8 @@ setDebug(true);
 函数 `window.parent.postMessage` 。 此功能需要指定目标来源，以确保
 事件只发送到受信任的父 iframe。 默认情况下，软件包
 使用 `https://web.telegram.org` 作为原点。
-开发人员应使用 `setTargetOrigin` 函数将事件传输到其他来源：
+开发人员应使用 `setTargetOrigin` 函数将事件传输到其他来源： 此功能需要指定目标来源，以确保
+事件只发送到受信任的父 iframe。 默认情况下，该软件包使用`https://web.telegram.org`作为来源。 开发人员应使用 `setTargetOrigin` 函数将事件传输到其他来源：
 
 ```typescript
 import { setTargetOrigin } from '@telegram-apps/sdk';
@@ -329,6 +331,7 @@ setTargetOrigin('https://myendpoint.org');
 ::: warning
 
 强烈建议不要长期覆盖此值，否则可能导致安全问题。
+只有当您知道自己在做什么时，才能指定该值。
 只有当您知道自己在做什么时，才能指定该值。
 
 :::

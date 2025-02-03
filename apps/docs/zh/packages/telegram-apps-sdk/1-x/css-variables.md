@@ -3,6 +3,8 @@
 该软件包提供的实用程序可帮助开发人员自动管理组件 CSS 变量。
 与 Telegram SDK 类似，`@telegram-apps/sdk` 允许开发人员设置全局 CSS 变量，将
 连接到特定组件。
+与 Telegram SDK 类似，"@telegram-apps/sdk "允许开发人员设置全局 CSS 变量，将
+关联到特定组件。
 
 ## `bindViewportCSSVars`
 
@@ -18,9 +20,9 @@ bindViewportCSSVars(vp);
 ```
 
 默认情况下，该函数会创建名为
-的全局 CSS 变量：`-tg-viewport-height`、`-tg-viewport-width` 和 `-tg-viewport-stable-height`。 不过，
+的全局 CSS 变量：`-tg-viewport-height`、`-tg-viewport-width` 和 `-tg-viewport-stable-height`。  不过，
 函数允许传递一个 CSS 变量名生成器，该生成器接受其中一个字符串值，每个
-负责一个特定属性：`width`、`height` 或 `stableHeight`。
+负责一个特定属性：`width`, `height`, 或 `stable-height`。
 
 ```ts
 bindViewportCSSVars(vp, key => {
@@ -51,7 +53,7 @@ bindThemeParamsCSSVars(tp);
 ```
 
 默认情况下，该函数会将 ThemeParams 实例属性的驼峰字母大小写转换为短横线命名法大小写，并在
-中添加前缀 `--tg-theme-`。 下面是创建变量的示例：
+中添加前缀 `--tg-theme-`。  下面是创建变量的示例：
 
 - `--tg-theme-bg-color`
 - `--tg-theme-secondary-bg-color`
@@ -84,6 +86,8 @@ bindMiniAppCSSVars(ma, tp);
 ```
 
 默认情况下，它会创建 `--tg-bg-color` 和 `--tg-header-color` 等变量。 不过，与所有
+其他 CSS 变量绑定函数一样，它允许自定义生成的名称。 传递的生成器
+接受其中一个关键字：`bg` 和 `header`，希望它能返回一个完整的 CSS 变量名。 不过，与所有
 其他 CSS 变量绑定函数一样，它允许自定义生成的名称。 传递的生成器
 接受其中一个关键字：`bg` 和 `header`，希望它能返回一个完整的 CSS 变量名。
 

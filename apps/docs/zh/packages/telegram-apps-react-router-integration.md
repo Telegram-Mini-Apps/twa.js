@@ -10,7 +10,7 @@
   </a>
 </p>
 
-Telegram Mini Apps [Navigator](telegram-apps-sdk/1-x/navigation.md) 和 [react-router-dom](https://www.npmjs.com/package/react-router-dom) 的集成.
+Telegram 小程序 [Navigator](telegram-apps-sdk/1-x/navigation.md) 和 [react-router-dom](https://www.npmjs.com/package/react-router-dom) 的集成.
 
 ## 安装
 

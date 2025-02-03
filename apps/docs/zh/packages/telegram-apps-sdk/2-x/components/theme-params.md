@@ -3,18 +3,19 @@
 💠[组件](../scopes.md) 负责 Telegram Mini
 Apps [主题参数](../../../../platform/theming.md)。
 
-## 安装
+## 挂载
 
-在使用该组件之前，必须对其进行安装，以确保属性配置正确。
-，使用 `mount` 方法更新 `isMounted` 信号属性。
+在使用该组件之前，必须对其进行挂载，以确保属性配置正确。 为此，请使用 `mount` 方法，这会更新 `isMounted` 信号属性。
 
 ::: code-group
 
 ```ts [Variable]
 import { themeParams } from '@telegram-apps/sdk';
 
-themeParams.mount(); 
-themeParams.isMounted(); // true
+if (themeParams.mount.isAvailable()) {
+  themeParams.mount();
+  themeParams.isMounted(); // true
+}
 ```
 
 ```ts [Functions]
@@ -23,8 +24,10 @@ import {
   isThemeParamsMounted,
 } from '@telegram-apps/sdk';
 
-mountThemeParams(); 
-isThemeParamsMounted(); // true
+if (mountThemeParams.isAvailable()) {
+  mountThemeParams();
+  isThemeParamsMounted(); // true
+}
 ```
 
 :::
@@ -54,11 +57,11 @@ isThemeParamsMounted(); // false
 
 该作用域允许通过 CSS 变量公开其属性。
 
-要创建新的 CSS 变量，请使用 `bindCssVars` 方法。 调用时，它会更新
+要创建新的 CSS 变量，请使用 `bindCssVars` 方法。  调用时，它会更新
 `isCssVarsBound` 信号属性。
 
 该方法可选择接受一个函数，该函数接收驼峰格式的主题调色板键，
-返回 CSS 变量名。 默认情况下，该方法使用这些规则转换调色板键：
+返回 CSS 变量名。  默认情况下，该方法使用这些规则转换调色板键：
 
 - 将数值转换为 kebab 大小写。
 - 预置 `--tg-theme-` 前缀。
@@ -66,21 +69,23 @@ isThemeParamsMounted(); // false
 ::: code-group
 
 ```ts [Variable]
-themeParams.bindCssVars();
-// Creates CSS variables like:
-// --tg-theme-button-color: #aabbcc
-// --tg-theme-accent-text-color: #aabbcc
-// --tg-theme-bg-color: #aabbcc
-// ...
+if (themeParams.bindCssVars.isAvailable()) {
+  themeParams.bindCssVars();
+  // Creates CSS variables like:
+  // --tg-theme-button-color: #aabbcc
+  // --tg-theme-accent-text-color: #aabbcc
+  // --tg-theme-bg-color: #aabbcc
+  // ...
 
-themeParams.bindCssVars(key => `--my-prefix-${key}`);
-// Creates CSS variables like:
-// --my-prefix-buttonColor: #aabbcc
-// --my-prefix-accentTextColor: #aabbcc
-// --my-prefix-bgColor: #aabbcc
-// ...
+  themeParams.bindCssVars(key => `--my-prefix-${key}`);
+  // Creates CSS variables like:
+  // --my-prefix-buttonColor: #aabbcc
+  // --my-prefix-accentTextColor: #aabbcc
+  // --my-prefix-bgColor: #aabbcc
+  // ...
 
-// themeParams.isCssVarsBound() -> true
+  // themeParams.isCssVarsBound() -> true
+}
 ```
 
 ```ts [Functions]
@@ -89,21 +94,23 @@ import {
   isThemeParamsCssVarsBound,
 } from '@telegram-apps/sdk';
 
-bindThemeParamsCssVars();
-// Creates CSS variables like:
-// --tg-theme-button-color: #aabbcc
-// --tg-theme-accent-text-color: #aabbcc
-// --tg-theme-bg-color: #aabbcc
-// ...
+if (bindThemeParamsCssVars.isAvailable()) {
+  bindThemeParamsCssVars();
+  // Creates CSS variables like:
+  // --tg-theme-button-color: #aabbcc
+  // --tg-theme-accent-text-color: #aabbcc
+  // --tg-theme-bg-color: #aabbcc
+  // ...
 
-bindThemeParamsCssVars(key => `--my-prefix-${key}`);
-// Creates CSS variables like:
-// --my-prefix-buttonColor: #aabbcc
-// --my-prefix-accentTextColor: #aabbcc
-// --my-prefix-bgColor: #aabbcc
-// ...
-
-// isThemeParamsCssVarsBound() -> true
+  bindThemeParamsCssVars(key => `--my-prefix-${key}`);
+  // Creates CSS variables like:
+  // --my-prefix-buttonColor: #aabbcc
+  // --my-prefix-accentTextColor: #aabbcc
+  // --my-prefix-bgColor: #aabbcc
+  // ...
+  
+  // isThemeParamsCssVarsBound() -> true
+}
 ```
 
 :::

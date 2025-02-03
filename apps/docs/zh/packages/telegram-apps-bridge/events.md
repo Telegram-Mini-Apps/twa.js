@@ -1,14 +1,14 @@
 # 事件
 
-本文涵盖与 [apps communication](../../platform/apps-communication.md)
-事件相关的主题。
+本文涵盖与[应用程序通信](../../platform/apps-communication.md)事件相关的主题。
 
 ## 定义事件处理程序
 
-为避免副作用，该软件包在导入时不会调用任何函数。 Telegram 迷你应用程序
-需要在本地 Telegram 应用程序和迷你应用程序之间使用特定的通信方式，其中涉及在全局 `window` 对象中定义某些方法。
+为避免副作用，该软件包在导入时不会调用任何函数。 Telegram 小程序
+需要在本地 Telegram 应用程序和小程序之间使用特定的通信方式，
+，其中涉及在全局 `window` 对象中定义某些方法。
 
-要启用此功能并开始接收 Telegram 迷你应用程序事件，请使用 `defineEventHandlers`
+要启用此功能并开始接收 Telegram 小程序事件，请使用 `defineEventHandlers`
 函数：
 
 ```typescript
@@ -17,8 +17,7 @@ import { defineEventHandlers } from '@telegram-apps/bridge';
 defineEventHandlers();
 ```
 
-这种设置通过监听
-和处理必要的事件，确保迷你应用能与原生 Telegram 应用正确交互。
+此设置确保小程序通过监听和处理必要的事件，能够正确与本地的Telegram应用交互。
 
 ## `on` 和 `off`
 

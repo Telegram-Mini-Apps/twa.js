@@ -1,10 +1,10 @@
 # 滑动行为
 
-负责 Telegram 迷你应用程序轻扫行为的💠[组件](../scopes.md)。
+负责 Telegram 小程序滑动行为的💠[组件](../scopes.md)。
 
 ## 检查支持
 
-要检查当前 Telegram 小应用程序版本是否支持轻扫行为，需要使用
+要检查当前 Telegram 小程序版本是否支持滑动行为，需要使用
 `isSupported` 方法：
 
 ::: code-group
@@ -23,18 +23,20 @@ isSwipeBehaviorSupported(); // boolean
 
 :::
 
-## 安装
+## 挂载
 
-在使用该组件之前，有必要将其安装到正确配置的属性中。
-为此，请使用 `mount` 方法。 它将更新 `isMounted` 信号属性。
+在使用此组件之前，需要将其挂载，以便与正确配置的属性一起工作。
+为此，请使用 `mount` 方法。  它将更新 `isMounted` 信号属性。
 
 ::: code-group
 
 ```ts [Variable]
 import { swipeBehavior } from '@telegram-apps/sdk';
 
-swipeBehavior.mount();
-swipeBehavior.isMounted(); // true
+if (swipeBehavior.mount.isAvailable()) {
+  swipeBehavior.mount();
+  swipeBehavior.isMounted(); // true
+}
 ```
 
 ```ts [Functions]
@@ -43,8 +45,10 @@ import {
   isSwipeBehaviorMounted,
 } from '@telegram-apps/sdk';
 
-mountSwipeBehavior(); 
-isSwipeBehaviorMounted(); // true
+if (mountSwipeBehavior.isAvailable()) {
+  mountSwipeBehavior();
+  isSwipeBehaviorMounted(); // true
+}
 ```
 
 :::
@@ -72,17 +76,21 @@ isSwipeBehaviorMounted(); // false
 
 ## 控制纵向滑动
 
-要启用或禁用垂直轻扫，请使用 `enableVertical` 和 `disableVertical` 方法。
+要启用或禁用垂直滑动，请使用 `enableVertical` 和 `disableVertical` 方法。
 调用这些方法时，会更新 `isVerticalEnabled` 信号属性值。
 
 ::: code-group
 
 ```ts [Variable]
-swipeBehavior.enableVertical();
-swipeBehavior.isVerticalEnabled(); // true
+if (swipeBehavior.enableVertical.isAvailable()) {
+  swipeBehavior.enableVertical();
+  swipeBehavior.isVerticalEnabled(); // true
+}
 
-swipeBehavior.disableVertical();
-swipeBehavior.isVerticalEnabled(); // false
+if (swipeBehavior.disableVertical.isAvailable()) {
+  swipeBehavior.disableVertical();
+  swipeBehavior.isVerticalEnabled(); // false
+}
 ```
 
 ```ts [Functions]
@@ -92,11 +100,15 @@ import {
   isVerticalSwipesEnabled,
 } from '@telegram-apps/sdk';
 
-enableVerticalSwipes();
-isVerticalSwipesEnabled(); // true
+if (enableVerticalSwipes.isAvailable()) {
+  enableVerticalSwipes();
+  isVerticalSwipesEnabled(); // true
+}
 
-disableVerticalSwipes();
-isVerticalSwipesEnabled(); // false
+if (disableVerticalSwipes.isAvailable()) {
+  disableVerticalSwipes();
+  isVerticalSwipesEnabled(); // false
+}
 ```
 
 :::

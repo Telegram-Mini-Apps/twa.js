@@ -13,7 +13,7 @@ import { initThemeParams } from '@telegram-apps/sdk';
 const [themeParams] = initThemeParams();  
 ```
 
-## 索取实际数据 {#request-actual-data}
+## 请求实际数据 {#request-actual-data}
 
 要获取实际的主题参数信息，开发人员可以使用 `requestThemeParams`
 函数：
@@ -75,7 +75,7 @@ themeParams.accentTextColor; // '#aa1399'
 
 可被 [跟踪](#events) 的事件列表：
 
-| 事件                   | 监听器                                                            | 触发条件          |
-| -------------------- | ------------------------------------------------------------- | ------------- |
-| `change`             | `() => void`                                                  | 组件中的某些部分发生了变化 |
+| 事件                   | 监听器                    | 触发条件          |
+| -------------------- | ---------------------- | ------------- |
+| `change`             | `() => void`           | 组件中的某些部分发生了变化 |
 | `change:{theme_key}` | `(value: RGB) => void` | 更改指定键的颜色      |

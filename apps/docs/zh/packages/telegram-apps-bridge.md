@@ -10,10 +10,10 @@
   </a>
 </p>
 
-Telegram 迷你应用程序的最底层通信层。
+Telegram 小程序的最底层通信层。
 
 本软件包为在 Telegram
-Mini Apps 平台上开发应用程序提供基本实用程序和类型。
+小程序平台上开发应用程序提供基本实用程序和类型。
 
 虽然开发者可以单独使用该软件包，但建议使用更高级别的软件包
 ，如 [@telegram-apps/sdk](telegram-apps-sdk/2-x) 。
@@ -38,7 +38,7 @@ yarn add @telegram-apps/bridge
 
 ## 使用方法
 
-下面是一个如何使用该软件包的基本示例。 有关详细信息，请参阅
+下面是一个如何使用该软件包的基本示例。  有关详细信息，请参阅
 文档中的后续文章。
 
 ```ts
@@ -50,14 +50,14 @@ import {
 
 // Define Mini Apps event handlers to receive 
 // events from the Telegram native application.
+defineEventHandlers();
 
-
-
-
+// Show the back button, wait for it to be clicked once,
+// then hide it.
 postEvent('web_app_setup_back_button', { is_visible: true });
 
 const off = on('back_button_pressed', () => {
   postEvent('web_app_setup_back_button', { is_visible: false });
   off();
-})；
+});
 ```

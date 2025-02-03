@@ -1,4 +1,4 @@
-# 关闭行为
+# `关闭行为`
 
 执行 Telegram Mini
 Apps [关闭行为](../../../../platform/closing-behavior.md) 功能。
@@ -10,15 +10,15 @@ Apps [关闭行为](../../../../platform/closing-behavior.md) 功能。
 ```typescript
 import { initClosingBehavior } from '@telegram-apps/sdk';
 
-const [closingBehavior] = initClosingBehavior();  
+const [closingBehavior] = initClosingBehavior()；  
 ```
 
-## 闭幕确认
+## 关闭确认
 
-要启用或禁用关闭确认，需要使用 `enableConfirmation()`
+关闭行为 要启用或禁用关闭确认，需要使用 `enableConfirmation()`
 和 `disableConfirmation()` 方法。 这些方法会更新 `isConfirmationNeeded` 属性：
 
-```typescript  
+```typescript
 closingBehavior.enableConfirmation();
 console.log(closingBehavior.isConfirmationNeeded); // true  
 
@@ -30,7 +30,7 @@ console.log(closingBehavior.isConfirmationNeeded); // false
 
 可被 [跟踪](#events) 的事件列表：
 
-| 事件                                                      | 监听函数                         | 触发条件                          |
-| ------------------------------------------------------- | -------------------------- | ----------------------------- |
-| `change`                                                | `() => void`               | 组件中的某些部分发生了变化                 |
-| `change:isConfirmationNeeded`                            | `(value: boolean) => void` | 已更改 `isConfirmationNeeded` 属性 |
+| 事件                            | 监听器                        | 触发条件                         |
+| ----------------------------- | -------------------------- | ---------------------------- |
+| `change`                      | `() => void`               | 组件中的某些部分发生了变化                |
+| `change:isConfirmationNeeded` | `(value: boolean) => void` | `isConfirmationNeeded` 属性已更改 |

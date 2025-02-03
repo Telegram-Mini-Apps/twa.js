@@ -1,4 +1,4 @@
-# 环境
+# Environment
 
 此软件包只能在 Telegram 应用程序中使用。 由于非 Telegram
 环境缺乏 Telegram 特有的特性，调用
@@ -6,41 +6,42 @@
 错误。
 
 不过，该软件包提供的实用工具可以帮助开发人员在 Telegram 之外开发应用程序
-，或者确定当前环境是否根本不是 Telegram 迷你应用程序。
+，或者确定当前环境是否根本不是 Telegram 小程序。
 
 ## `isTMA`
 
-要检查当前环境是否为 Telegram 迷你应用程序，开发人员可以使用 `isTMA` 函数。
+要检查当前环境是否为 Telegram 小程序，开发人员可以使用 `isTMA` 函数。
 它有两种工作模式：**简单** 和 **完整**。
+它有两种模式：**简单** 和 **完整**。
 
 ### 简单
 
 在这种模式下，函数会尝试从环境中获取启动参数。
 
-如果提取成功，该环境将被视为 Telegram 迷你应用程序。
+如果提取成功，该环境将被视为 Telegram 小程序。
+简单模式是同步模式，返回一个布尔值。
 简单模式是同步模式，返回一个布尔值。
 
 ```ts
 import { isTMA } from '@telegram-apps/bridge';
 
 if (isTMA('simple')) {
-  console.log('It\'s Telegram Mini Apps');
+  console.log('It\'s Telegram小程序');
 }
 ```
 
-这种模式略显肤浅，但仍可满足大多数应用的需要。 要进行更
-可靠的检查，请使用 [complete](#complete) 模式。
+这种模式略显肤浅，但仍可满足大多数应用的需要。 要进行更可靠的检查，请使用 [complete](#complete) 模式。
 
 ### 完整 {#complete}
 
-在这种模式下，函数会调用 Telegram Mini Apps 特有的方法，并等待
+在这种模式下，函数会调用 Telegram 小程序 特有的方法，并等待
 方法特有的事件发生。
 
 ```ts
 import { isTMA } from '@telegram-apps/bridge';
 
 if (await isTMA()) {
-  console.log('It\'s Telegram Mini Apps');
+  console.log('It\'s Telegram小程序');
 }
 ```
 
@@ -49,17 +50,18 @@ if (await isTMA()) {
 
 ```ts
 if (await isTMA({ timeout: 50 })) {
-  console.log('It\'s Telegram Mini Apps');
+  console.log('It\'s Telegram小程序');
 }
 ```
 
 ## `mockTelegramEnv`
 
 该软件包提供了 `mockTelegramEnv` 函数，可模仿
+Telegram 提供的环境。 该软件包提供了 `mockTelegramEnv` 函数，可模仿
 Telegram 提供的环境。 它可以帮助开发人员在
-[BotFather](https://t.me/botfather) 中创建小应用程序记录，甚至无需创建记录即可开始构建应用程序。
+[BotFather](https://t.me/botfather) 中创建小程序记录，甚至无需创建记录即可开始构建应用程序。
 
-该函数接受原始或解析格式的发射参数。 下面就是一个例子：
+此函数接受原始或解析格式的启动参数。 下面就是一个例子：
 
 ```ts
 mockTelegramEnv({
@@ -116,5 +118,5 @@ mockTelegramEnv({
 ```
 
 > [!WARNING]
-> 该函数仅模仿 Telegram 环境行为。 它不会发送任何真正的
+> 该函数仅模仿 Telegram 环境行为。  它不会发送任何真正的
 > 请求，也不会执行只能在 Telegram 应用程序中看到的操作。

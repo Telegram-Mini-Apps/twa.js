@@ -1,15 +1,16 @@
-# 环境
+# Environment
 
 此软件包只能在 Telegram 应用程序中使用。 由于非 Telegram
 环境缺乏 Telegram 特有的特性，调用
 [retrieveLaunchParams](launch-parameters.md#retrieving)
 或 [postEvent](methods-and-events.md#postevent) 等方法会导致错误。
 
-不过，该软件包提供了 `mockTelegramEnv` 函数，用于模仿 Telegram 提供的环境
-。 它可以帮助开发人员在 BotFather 中创建迷你
-应用程序记录，甚至无需创建记录即可开始开发应用程序。
+此软件包只能在 Telegram 应用程序中使用。 由于非 Telegram
+环境缺乏 Telegram 特有的特性，调用
+[retrieveLaunchParams](launch-parameters.md#retrieving)
+或 [postEvent](methods-and-events.md#postevent) 等方法会导致错误。 它可以帮助开发人员在 BotFather 中创建小程序记录，甚至无需创建记录即可开始开发应用程序。
 
-该函数接受原始或解析格式的发射参数。 下面就是一个例子：
+此函数接受原始或解析格式的启动参数。 下面就是一个例子：
 
 ```ts
 import { mockTelegramEnv, parseInitData } from '@telegram-apps/sdk';
@@ -55,6 +56,6 @@ mockTelegramEnv({
 ```
 
 :::warning
-请注意，此功能只能模仿 Telegram 环境行为。 它不会发送任何真正的
+请注意，此功能只能模仿 Telegram 环境行为。  它不会发送任何真正的
 请求，也不会执行只能在 Telegram 应用程序中看到的操作。
 :::

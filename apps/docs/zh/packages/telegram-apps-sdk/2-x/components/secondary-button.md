@@ -1,10 +1,10 @@
-# 辅助按钮
+# 次级按钮
 
-负责 Telegram 迷你应用程序二级按钮的💠[组件](../scopes.md)。
+负责 Telegram 小程序次级按钮的💠[组件](../scopes.md)。
 
 ## 检查支持
 
-要检查当前 Telegram 迷你应用程序版本是否支持辅助按钮，请使用
+要检查当前 Telegram 小程序版本是否支持辅助按钮，请使用
 `isSupported` 方法：
 
 ::: code-group
@@ -23,18 +23,20 @@ isSecondaryButtonSupported(); // boolean
 
 :::
 
-## 安装
+## 挂载
 
-在使用该组件之前，有必要将其安装到配置正确的
-属性中。 为此，请使用 `mount` 方法。 它将更新 `isMounted` 信号属性。
+在使用此组件之前，需要将其挂载，以便与正确配置的属性一起工作。 在使用该组件之前，有必要将其安装到配置正确的
+属性中。 为此，请使用 `mount` 方法。 它将更新 `isMounted` 信号属性。 它将更新 `isMounted` 信号属性。
 
 ::: code-group
 
 ```ts [Variable]
 import { secondaryButton } from '@telegram-apps/sdk';
 
-secondaryButton.mount();
-secondaryButton.isMounted(); // true
+if (secondaryButton.mount.isAvailable()) {
+  secondaryButton.mount();
+  secondaryButton.isMounted(); // true
+}
 ```
 
 ```ts [Functions]
@@ -43,8 +45,10 @@ import {
   isSecondaryButtonMounted,
 } from '@telegram-apps/sdk';
 
-mountSecondaryButton();
-isSecondaryButtonMounted(); // true
+if (mountSecondaryButton.isAvailable()) {
+  mountSecondaryButton();
+  isSecondaryButtonMounted(); // true
+}
 ```
 
 :::
@@ -72,13 +76,14 @@ isSecondaryButtonMounted(); // false
 
 > [!WARNING]
 > 该组件的属性取决于 [Mini App](mini-app.md)
-> 和 [Theme Params](theme-params.md) 组件的值。 具体来说，二级按钮使用 Mini
-> App 的 `bottomBarBgColor` 和一些主题参数颜色。 在使用辅助按钮之前，请确保将这些组件安装到
+> 和 [Theme Params](theme-params.md) 组件的值。
+> 。 具体来说，次级按钮使用 Mini
+> App 的 `bottomBarBgColor` 和一些主题参数颜色。 在使用次级按钮之前，请确保将这些组件已挂载
 > 。
 
 ## 设置属性
 
-要更新按钮属性，请使用 `setParams` 方法。 它接受一个带有可选
+要更新按钮属性，请使用 `setParams` 方法。  它接受一个带有可选
 属性的对象，每个属性负责各自的按钮特性。
 
 反过来，调用该方法会更新
@@ -88,36 +93,38 @@ isSecondaryButtonMounted(); // false
 ::: code-group
 
 ```ts [Variable]
-secondaryButton.setParams({
-  backgroundColor: '#000000',
-  hasShineEffect: true,
-  isEnabled: true,
-  isLoaderVisible: true,
-  isVisible: true,
-  position: 'top',
-  text: 'My text',
-  textColor: '#ffffff'
-});
-secondaryButton.backgroundColor(); // '#000000'
-secondaryButton.hasShineEffect(); // true
-secondaryButton.isEnabled(); // true
-secondaryButton.isLoaderVisible(); // true
-secondaryButton.isVisible(); // true
-secondaryButton.position(); // 'top'
-secondaryButton.text(); // 'My text'
-secondaryButton.textColor(); // '#ffffff'
+if (secondaryButton.setParams.isAvailable()) {
+  secondaryButton.setParams({
+    backgroundColor: '#000000',
+    hasShineEffect: true,
+    isEnabled: true,
+    isLoaderVisible: true,
+    isVisible: true,
+    position: 'top',
+    text: 'My text',
+    textColor: '#ffffff'
+  });
+  secondaryButton.backgroundColor(); // '#000000'
+  secondaryButton.hasShineEffect(); // true
+  secondaryButton.isEnabled(); // true
+  secondaryButton.isLoaderVisible(); // true
+  secondaryButton.isVisible(); // true
+  secondaryButton.position(); // 'top'
+  secondaryButton.text(); // 'My text'
+  secondaryButton.textColor(); // '#ffffff'
 
-secondaryButton.state();
-// {
-//   backgroundColor: '#000000',
-//   hasShineEffect: true,
-//   isActive: true,
-//   isLoaderVisible: true,
-//   isVisible: true,
-//   position: 'top',
-//   text: 'My text',
-//   textColor: '#ffffff'
-// }
+  secondaryButton.state();
+  // {
+  //   backgroundColor: '#000000',
+  //   hasShineEffect: true,
+  //   isActive: true,
+  //   isLoaderVisible: true,
+  //   isVisible: true,
+  //   position: 'top',
+  //   text: 'My text',
+  //   textColor: '#ffffff'
+  // }
+}
 ```
 
 ```ts [Functions]
@@ -134,36 +141,38 @@ import {
   secondaryButtonPosition,
 } from '@telegram-apps/sdk';
 
-setSecondaryButtonParams({
-  backgroundColor: '#000000',
-  hasShineEffect: true,
-  isEnabled: true,
-  isLoaderVisible: true,
-  isVisible: true,
-  position: 'top',
-  text: 'My text',
-  textColor: '#ffffff'
-});
-secondaryButtonBackgroundColor(); // '#000000'
-secondaryButtonHasShineEffect(); // true
-isSecondaryButtonEnabled(); // true
-isSecondaryButtonLoaderVisible(); // true
-isSecondaryButtonVisible(); // true
-secondaryButtonPosition(); // 'top'
-secondaryButtonText(); // 'My text'
-secondaryButtonTextColor(); // '#ffffff'
+if (setSecondaryButtonParams.isAvailable()) {
+  setSecondaryButtonParams({
+    backgroundColor: '#000000',
+    hasShineEffect: true,
+    isEnabled: true,
+    isLoaderVisible: true,
+    isVisible: true,
+    position: 'top',
+    text: 'My text',
+    textColor: '#ffffff'
+  });
+  secondaryButtonBackgroundColor(); // '#000000'
+  secondaryButtonHasShineEffect(); // true
+  isSecondaryButtonEnabled(); // true
+  isSecondaryButtonLoaderVisible(); // true
+  isSecondaryButtonVisible(); // true
+  secondaryButtonPosition(); // 'top'
+  secondaryButtonText(); // 'My text'
+  secondaryButtonTextColor(); // '#ffffff'
 
-secondaryButtonState();
-// {
-//   backgroundColor: '#000000',
-//   hasShineEffect: true,
-//   isActive: true,
-//   isLoaderVisible: true,
-//   isVisible: true,
-//   position: 'top',
-//   text: 'My text',
-//   textColor: '#ffffff'
-// }
+  secondaryButtonState();
+  // {
+  //   backgroundColor: '#000000',
+  //   hasShineEffect: true,
+  //   isActive: true,
+  //   isLoaderVisible: true,
+  //   isVisible: true,
+  //   position: 'top',
+  //   text: 'My text',
+  //   textColor: '#ffffff'
+  // }
+}
 ```
 
 :::
@@ -176,15 +185,17 @@ secondaryButtonState();
 ::: code-group
 
 ```ts [Variable]
-function listener() {
-  console.log('Clicked!');
-}
+if (secondaryButton.onClick.isAvailable()) {
+  function listener() {
+    console.log('Clicked!');
+  }
 
-const offClick = secondaryButton.onClick(listener);
-offClick();
-// or
-secondaryButton.onClick(listener);
-secondaryButton.offClick(listener);
+  const offClick = secondaryButton.onClick(listener);
+  offClick();
+  // or
+  secondaryButton.onClick(listener);
+  secondaryButton.offClick(listener);
+}
 ```
 
 ```ts [Functions]
@@ -193,15 +204,17 @@ import {
   offSecondaryButtonClick,
 } from '@telegram-apps/sdk';
 
-function listener() {
-  console.log('Clicked!');
-}
+if (onSecondaryButtonClick.isAvailable()) {
+  function listener() {
+    console.log('Clicked!');
+  }
 
-const offClick = onSecondaryButtonClick(listener);
-offClick();
-// or
-onSecondaryButtonClick(listener);
-offSecondaryButtonClick(listener);
+  const offClick = onSecondaryButtonClick(listener);
+  offClick();
+  // or
+  onSecondaryButtonClick(listener);
+  offSecondaryButtonClick(listener);
+}
 ```
 
 :::

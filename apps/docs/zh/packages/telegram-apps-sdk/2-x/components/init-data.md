@@ -1,5 +1,7 @@
 ---
-outline: [ 2, 3 ]
+outline:
+  - 2
+  - 3
 ---
 
 # 初始数据
@@ -56,13 +58,13 @@ const initData = parseInitData();
 该函数返回 [init data](../../../../platform/init-data.md#parameters-list) 对象
 ，其中包含深驼峰型属性。
 
-## 信号
+## 信号(Signals)
 
 本节提供了与启动数据有关的信号的完整列表。
 
 ### `authDate`
 
-返回类型：`Date | undefined`
+Return type: `Date | undefined`
 
 初始化数据的创建日期。
 
@@ -82,7 +84,7 @@ initDataAuthDate(); // Date(1727368894000)
 
 ### `canSendAfter`
 
-返回类型：`number | undefined`
+Return type: `number | undefined`
 
 通过
 方法 [answerWebAppQuery](https://core.telegram.org/bots/api#answerwebappquery) 发送信息的秒数。
@@ -103,7 +105,7 @@ initDataAuthDate(); // 3600
 
 ### `canSendAfterDate`
 
-返回类型：`Date | undefined`
+Return type: `Date | undefined`
 
 [canSendAfter](#cansendafter)，但作为日期。
 
@@ -130,7 +132,7 @@ initDataCanSendAfterDate(); // Date(1727368897600)
 
 > [!NOTE]
 > 返回超级群组、频道和群组聊天记录 - 仅适用于通过
-> 附件菜单启动的迷你应用程序。
+> 附件菜单启动的小程序。
 
 ::: code-group
 
@@ -162,9 +164,9 @@ initDataChat();
 
 ### `chatType`
 
-返回类型：`string | undefined`
+Return type: `string | undefined`
 
-打开迷你应用程序的聊天类型。 值：
+打开小程序的聊天类型。  值：
 
 - `sender`
 - `private`
@@ -191,9 +193,9 @@ initDataChatType(); // 'group'
 
 ### `chatInstance`
 
-返回类型：`string | undefined`
+Return type: `string | undefined`
 
-全局标识符，表示打开迷你应用的聊天窗口。
+全局标识符，表示打开小程序的聊天窗口。
 
 > [!WARNING]
 > 仅返回通过直接链接打开的应用程序。
@@ -214,7 +216,7 @@ initDataChatInstance(); // '899667289674387257'
 
 ### `hash`
 
-返回类型：`string | undefined`
+Return type: `string | undefined`
 
 初始化数据签名。
 
@@ -234,9 +236,9 @@ initDataHash(); // 'sgbbc62g3bvdhg3djsaasd'
 
 ### `queryId`
 
-返回类型：`string | undefined`
+Return type: `string | undefined`
 
-迷你应用程序的唯一会话 ID。 在
+小程序的唯一会话 ID。 小程序的唯一会话 ID。 在
 通过
 方法 [answerWebAppQuery](https://core.telegram.org/bots/api#answerwebappquery) 发送信息的过程中使用。
 
@@ -256,7 +258,7 @@ initDataQueryId(); // 'ssVXZ231ger'
 
 ### `raw`
 
-返回类型：`string | undefined`
+Return type: `string | undefined`
 
 初始化数据的原始字符串。
 
@@ -283,7 +285,7 @@ initDataRaw(); // 'user=...&chat=...&...'
 聊天时的聊天伙伴数据，机器人是通过附件菜单启动的。
 
 > [!NOTE]
-> 仅对私人聊天和通过附件菜单启动的迷你应用程序返回。
+> 仅对私人聊天和通过附件菜单启动的小程序返回。
 
 ::: code-group
 
@@ -346,7 +348,7 @@ initDataState();
 
 ### `startParam`
 
-返回类型：`string | undefined`
+Return type: `string | undefined`
 
 链接中指定的 `startattach` 或 `startapp` 查询参数的值。
 

@@ -1,7 +1,7 @@
 # 调试 {#Debugging}
 
 应用程序开发是一个相当艰苦和持续的过程，需要大量的时间
-和耐心。 为简化操作，Telegram Mini Apps 平台允许调试已开发的
+和耐心。 为简化操作，Telegram 小程序 平台允许调试已开发的
 应用程序。
 
 ## 启用调试模式
@@ -14,13 +14,13 @@
 - 向下滚动打开的菜单，点击 `Experimental settings` 按钮。
 - 选中 `Enable webview inspecting` 选项。
 
-启用调试模式后，右键单击 Mini App 将显示一个上下文菜单，其中包含
+启用调试模式后，右键单击 小程序将显示一个上下文菜单，其中包含
 `Inspect` 选项，允许您打开开发工具。
 
 ### macOS 版 Telegram
 
 - 下载并启动 Telegram macOS [Beta 版](https://telegram.org/dl/macos/beta)。
-- 快速点击 5 次 "设置 "图标，打开调试菜单，启用 `Debug Mini Apps`
+- 快速点击 5 次 "设置 "图标，打开调试菜单，启用 `Debug小程序`
   选项。
 
 和 Telegram Desktop 中一样，`Inspect Element` 选项也会出现在右键菜单中。
@@ -32,7 +32,7 @@
 - 在 Telegram 设置中，一路向下滚动，按住 **版本号** 两次。
 - 在调试设置中选择 `Enable WebView Debug`。
 - 将手机连接到电脑，然后在 Chrome 浏览器中打开 `chrome://inspect/#devices`--在手机上启动
-  你的迷你应用程序时，就会看到它。
+  你的小程序时，就会看到它。
 
 ### iOS 版 Telegram
 
@@ -66,7 +66,7 @@ iOS 网络视图调试需要 Safari 桌面浏览器，因此需要 macOS。
 ## Eruda
 
 [Eruda](https://www.npmjs.com/package/eruda)是一种在
-网络中提供轻量级控制台的技术。 我们通常在不提供自己控制台的环境中使用此类软件包。
+网络中提供轻量级控制台的技术。  我们通常在不提供自己控制台的环境中使用此类软件包。
 
 首先，需要安装软件包并将其初始化。
 
@@ -86,5 +86,5 @@ eruda.init();
 
 :::
 
-初始化 eruda 后，您将在用户界面中看到其元素。 点击它将显示
+初始化 eruda 后，您将在用户界面中看到其元素。  点击它将显示
 控制台。

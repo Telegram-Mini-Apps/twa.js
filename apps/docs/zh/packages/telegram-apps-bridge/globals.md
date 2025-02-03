@@ -1,4 +1,4 @@
-# 全局变量
+# 全局
 
 所谓全局值，是指在软件包的所有方法中使用的全局值。
 
@@ -13,13 +13,13 @@ $debug.set(true);
 ```
 
 将其设置为 `true`后，在调用 `postEvent` 函数或接收
-Mini Apps 事件时就会看到日志。
+小程序事件时就会看到日志。
 
 ## `$targetOrigin`
 
 如果软件包在浏览器环境（iframe）中使用，它将使用 `window.parent.postMessage`
-函数。 该功能需要指定目标来源，以确保事件只发送到
-受信任的父 iframe。 默认情况下，软件包使用 `https://web.telegram.org` 作为原点。
+函数。  该功能需要指定目标来源，以确保事件只发送到
+受信任的父 iframe。 默认情况下，该软件包使用`https://web.telegram.org`作为来源。
 
 ```typescript
 import { $targetOrigin } from '@telegram-apps/bridge';

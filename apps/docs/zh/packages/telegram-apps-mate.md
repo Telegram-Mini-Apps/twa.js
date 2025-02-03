@@ -1,12 +1,12 @@
 # @telegram-apps/mate
 
-Mate 是 Telegram Mini Apps
+Mate 是 Telegram 小程序
 平台为开发人员提供的多功能工具，可以解决各种问题。
 
 ## 安装
 
 要开始使用 Mate，需要安装 `@telegram-apps/mate`
-软件包。 开发人员可以在本地和全球范围内进行开发：
+软件包。  开发人员可以在本地和全球范围内进行开发：
 
 :::code-group
 
@@ -46,7 +46,7 @@ mate --help
 
 ## 免安装使用
 
-不安装软件包，也可以使用 `pnpm` 或 `npx`：
+也可以通过使用 `pnpm` 或 `npx` 不安装软件包：
 
 :::code-group
 

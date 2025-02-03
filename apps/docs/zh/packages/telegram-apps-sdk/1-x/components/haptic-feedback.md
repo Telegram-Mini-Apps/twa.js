@@ -1,4 +1,4 @@
-# 触觉反馈
+# `触觉反馈`
 
 实现 Telegram Mini
 Apps [haptic feedback](../../../../.platform/haptic-feedback.md) 功能。
@@ -7,7 +7,7 @@ Apps [haptic feedback](../../../../.platform/haptic-feedback.md) 功能。
 
 如果此功能在您的设备上不起作用：请检查设置。 例如，
 Android 手机系统，需要进入 _"设置" > "声音和振动" >
-"振动和触觉"_ ，找到 _"触摸反馈"_ 选项。 **不应**为
+"振动和触觉"_ ，找到 _"触摸反馈"_ 选项。  **不应**为
 0。
 
 :::
@@ -29,7 +29,7 @@ const hapticFeedback = initHapticFeedback();
 
 ### `impactOccurred`
 
-一种方法表明发生了撞击。 Telegram 应用程序可根据
+一种方法表明发生了碰撞。 Telegram 应用程序可根据
 传递的样式值播放适当的触觉效果。 发生触觉事件时的撞击方式：
 
 - `light`，表示小型或轻量级用户界面对象之间发生碰撞
@@ -44,7 +44,7 @@ hapticFeedback.impactOccurred('medium');
 
 ### `notificationOccurred`
 
-一个方法可以说明任务或操作成功、失败或产生警告。 Telegram 应用程序
+该方法可以说明任务或操作成功、失败或产生警告。 Telegram 应用程序
 可根据传递的类型值播放相应的触觉效果。 发生的通知类型
 事件。
 

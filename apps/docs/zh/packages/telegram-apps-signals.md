@@ -41,15 +41,15 @@ import { signal } from '@telegram-apps/signals';
 const isVisible = signal(false);
 ```
 
-返回值代表一个具有实用方法的函数。 函数本身返回
-当前信号值。
+返回值代表一个具有实用方法的函数。  要跟踪 signal 变化，请使用 `sub` 方法。 它返回一个函数，用于移除绑定的
+监听器。 监听器接受两个参数：当前值和上一个值。
 
 ```ts
 console.log('The element is', isVisible() ? 'visible' : 'invisible');
 ```
 
 该函数还接受选项作为第二个参数。 开发人员可以指定
-`equals` 函数，该函数接受当前值和输入值，如果认为它们相等，则返回 true，
+`equals` 函数，该函数接受当前值和输入值，如果认为它们相等，则返回 true
 。
 
 ```ts
@@ -74,7 +74,7 @@ isVisible.set(true);
 
 ### `sub`
 
-要跟踪信号变化，请使用 `sub` 方法。 它返回一个函数，用于移除绑定的
+要跟踪 signal 变化，请使用 `sub` 方法。 它返回一个函数，用于移除绑定的
 监听器。 监听器接受两个参数：当前值和上一个值。
 
 ```ts
@@ -123,7 +123,7 @@ isVisible.unsubAll();
 
 ::: info
 
-此方法不会移除计算信号添加的监听器。
+此方法不会移除计算 signal 添加的监听器。
 
 :::
 
@@ -141,7 +141,7 @@ isVisible.reset(); // isVisible becomes false again
 
 ### `destroy`
 
-当不再需要该信号且该信号没有被任何计算信号监听时，开发者
+当不再需要该 signal 且该 signal 没有被任何计算 signal 监听时，开发者
 可以使用 `destroy` 方法强制移除所有监听者：
 
 ```ts
@@ -150,7 +150,7 @@ isVisible.destroy();
 
 ## Computed
 
-`computed` 函数构建了一个计算 signal，当被调用signal的任何
+`computed` 函数构建了一个computed signal，当被调用signal的任何
 发生变化时，该 signal 会自动重新计算。
 
 这里有一个例子：
@@ -166,7 +166,7 @@ a.set(5); // sum becomes 7
 b.set(5); // sum becomes 10
 ```
 
-返回值代表一个缺少 `set` 和 `reset` 方法的信号。
+返回值代表一个缺少 `set` 和 `reset` 方法的 signal 。
 
 ## 批量更改
 
